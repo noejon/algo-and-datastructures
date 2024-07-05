@@ -1,5 +1,5 @@
 const MinHeap = function () {
-  const heap = [];
+  let heap = [];
 
   /**
    * * Gets the left child index of a parent element
@@ -43,8 +43,7 @@ const MinHeap = function () {
     }
   }
 
-  const bubbleDown = () => {
-    let parentIndex = 0;
+  const bubbleDown = (parentIndex = 0) => {
     let leftChildIndex = getLeftChildIndex(parentIndex);
     let rightChildIndex = getRightChildIndex(parentIndex);
 
@@ -82,6 +81,16 @@ const MinHeap = function () {
     [heap[0], heap[heap.length - 1]] = [heap[heap.length - 1], heap[0]];
     heap.length--;
     bubbleDown();
+  }
+
+  this.heapify = (array) => {
+    heap = array;
+    let nodeCount = heap.length;
+    let indexOfLastParentInArray = Math.floor(nodeCount / 2) - 1;
+
+    for (let i = indexOfLastParentInArray; i >= 0; i--) {
+      bubbleDown(i);
+    }
   }
 
   this.toString = () => {

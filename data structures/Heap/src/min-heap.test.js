@@ -38,5 +38,13 @@ describe('Given I create a min heap', () => {
       expect(heap.toString()).toBe('[3, 5, 6, 8, 9]');
       expect(heap.peek()).toBe(3);
     })
+  });
+
+  describe('when a heap is created from an array', () => {
+    test('then the resulting heap should maintain its heap properties', () => {
+      let heap = new MinHeap();
+      heap.heapify([1, 6, 5, 3, 8, 10, 9]);
+      expect(heap.toString()).toBe("[1, 3, 5, 6, 8, 10, 9]")
+    })
   })
 });

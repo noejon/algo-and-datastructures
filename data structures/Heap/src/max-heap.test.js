@@ -39,4 +39,12 @@ describe('Given I create a max heap', () => {
       expect(heap.peek()).toBe(8);
     })
   })
+
+  describe('when a heap is created from an array', () => {
+    test('then the resulting heap should maintain its heap properties', () => {
+      let heap = new MaxHeap();
+      heap.heapify([1, 6, 5, 3, 8, 10, 9]);
+      expect(heap.toString()).toBe("[10, 8, 9, 3, 6, 5, 1]")
+    })
+  })
 });
